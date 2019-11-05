@@ -22,7 +22,7 @@ const SearchBar = onMessageSubmit => {
   return (
     <form className="formContainer" onSubmit={onTextSubmit}>
       <input className="textInput" ref={inputEl} type="text"></input>
-      {/* <input className="submitButton" type="submit" value="Submit" /> */}
+      <input className="submitButton" type="submit" value="Submit" />
     </form>
   );
 }
