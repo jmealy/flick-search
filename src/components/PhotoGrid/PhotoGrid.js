@@ -4,18 +4,14 @@ import flickrApi from '../../services/flickrApiService';
 
 const PhotoGrid = (props) => {
 
-  console.log(props.images);
-  // const getImages = async () => {
-  //   const images = await flickrApi.getImageUrls();
-    
-  //   return images
-  // };
-
-  // getImages();
+  if (!props.images) return null;
 
 
   return (
     <div>
+      <ul>
+        { props.images.map(photo => (<li>{photo}</li>)) }
+      </ul>
     </div>
   );
 }

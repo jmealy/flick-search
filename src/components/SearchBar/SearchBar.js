@@ -1,18 +1,22 @@
 import React, { useRef } from 'react';
-// import flickrApi from '../../services/flickrApiService';
+import addImages from '../../state/actions/addImages';
+import { connect } from 'react-redux';
+import flickrApi from '../../services/flickrApiService';
 import './SearchBar.css';
 
-const SearchBar = onMessageSubmit => {
+const SearchBar = props => {
   const inputEl = useRef(null);
 
-  const onTextSubmit = event => {
+  const onTextSubmit = async (event) => {
     if(!inputEl || !inputEl.current) return;
 
     event.preventDefault();
     const inputText = inputEl.current.value;
 
-    onMessageSubmit(inputText);
+    const images = await flickrApi.getImageUrls();
 
+    props.addImages(images);
+    
     // Clear the input field manually since default was prevented.
     if (inputText.length > 0) {
       inputEl.current.value = '';
@@ -26,5 +30,5 @@ const SearchBar = onMessageSubmit => {
     </form>
   );
 }
-
-export default SearchBar;
+ 
+export default connect(null, { addImages })(SearchBar);

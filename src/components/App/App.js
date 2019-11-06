@@ -10,7 +10,7 @@ function App() {
         <h1 className="mainHeader">Flickr Search</h1>
         <h4 className="subHeader">Display images from Flickr based on a search term</h4>
       </div>
-      <SearchBar onMessageSubmit={()=>{}}/>
+      <SearchBar/>
       <PhotoGrid/>
     </div>
   );
