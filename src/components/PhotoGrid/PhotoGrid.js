@@ -9,9 +9,12 @@ const PhotoGrid = (props) => {
 
   return (
     <div>
-      <section id="photos">
-        {props.images.map(photo => (<img src={photo} />))}
-      </section>
+      <div className="photos">
+        {props.images.map(photo => (
+        <img src={photo} />
+        // <div>{photo}</div>
+        ))}
+      </div>
     </div>
   );
 }

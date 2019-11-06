@@ -13,7 +13,7 @@ const SearchBar = props => {
     event.preventDefault();
     const inputText = inputEl.current.value;
 
-    const images = await flickrApi.getImageUrls();
+    const images = await flickrApi.getImageUrls(inputText);
 
     props.addImages(images);
     
