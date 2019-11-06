@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import flickrApi from '../../services/flickrApiService';
+// import flickrApi from '../../services/flickrApiService';
 import './SearchBar.css';
 
 const SearchBar = onMessageSubmit => {

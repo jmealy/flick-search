@@ -1,17 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import flickrApi from '../../services/flickrApiService';
 
-const PhotoGrid = () => {
+const PhotoGrid = (props) => {
 
-  const getImages = async () => {
-    const images = await flickrApi.getImageUrls();
+  console.log(props.images);
+  // const getImages = async () => {
+  //   const images = await flickrApi.getImageUrls();
     
-    return images
-  };
+  //   return images
+  // };
 
-  getImages();
+  // getImages();
 
-  // console.log(images);
 
   return (
     <div>
@@ -19,4 +20,6 @@ const PhotoGrid = () => {
   );
 }
 
-export default PhotoGrid;
+const mapStateToProps = state => ({ images: state.images });
+
+export default connect(mapStateToProps)(PhotoGrid);

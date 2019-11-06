@@ -1,12 +1,13 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
+import imageReducer from './reducers/images';
 
 import thunk from 'redux-thunk';
 
 //actions
 
 
-export function configureStore(initialState = {}) {
-  const store = createStore(reducers, initialState, applyMiddleware(thunk));
+export function configureStore(initialState = { images: ['hello'] }) {
+  const store = createStore(imageReducer, initialState, applyMiddleware(thunk));
   return store;
 }
 
