@@ -10,7 +10,7 @@ const PhotoGrid = (props) => {
   return (
     <div>
       <ul>
-        { props.images.map(photo => (<li>{photo}</li>)) }
+        { props.images.map(photo => (<li><img src={photo}/></li>)) }
       </ul>
     </div>
   );
