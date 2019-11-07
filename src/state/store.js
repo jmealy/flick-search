@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import imageReducer from './reducers/images';
 import thunk from 'redux-thunk';
 
-export function configureStore(initialState = { images: ['hello', 'there'] }) {
+export function configureStore(initialState = { images: [] }) {
   const store = createStore(
     imageReducer,
     initialState,
