@@ -2,7 +2,7 @@ import addImages from "../state/actions/addImages";
 import config from '../config';
 
 const getImages = (searchTerm) => async dispatch => {
-  const options = `&api_key=${config.apiKey}&tags=${searchTerm}&per_page=${config.maxImages}
+  const options = `&api_key=${config.apiKey}&tags=${searchTerm}&safe_search=on&per_page=${config.maxImages}
     &page=1&format=json&nojsoncallback=1`;
 
   let responseBody;

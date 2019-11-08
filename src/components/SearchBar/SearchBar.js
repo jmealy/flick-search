@@ -14,11 +14,6 @@ const SearchBar = props => {
 
     // dispatch async request for images
     props.getImages(inputText);
-
-    // Clear the input field manually since default was prevented.
-    if (inputText.length > 0) {
-      inputEl.current.value = '';
-    }
   };
 
   return (
