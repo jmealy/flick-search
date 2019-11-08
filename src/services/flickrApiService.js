@@ -1,20 +1,20 @@
 import addImages from "../state/actions/addImages";
+import config from '../config';
 
-const getImages = (searchTerm) => async dispatch =>{
-  const baseUrl = ' https://www.flickr.com/services/rest/?method=flickr.photos.search'
-  const apiKey = '0108b623dbb81829b5f013074dee22bb';
-  const options = `&api_key=${apiKey}&tags=${searchTerm}&per_page=100&page=1&format=json&nojsoncallback=1`;
+const getImages = (searchTerm) => async dispatch => {
+  const options = `&api_key=${config.apiKey}&tags=${searchTerm}&per_page=${config.maxImages}
+    &page=1&format=json&nojsoncallback=1`;
 
   let responseBody;
   try {
-    const response = await fetch(baseUrl + options);
+    const response = await fetch(config.flickrUrl + options);
     responseBody = await response.json();
 
     const imageUrls = responseBody.photos.photo.map(image =>
       `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`
     );
     dispatch(addImages(imageUrls));
-  } catch (error){
+  } catch (error) {
     console.log(`an error occured while fetching images: ${error}`);
 
     dispatch(addImages([]));
