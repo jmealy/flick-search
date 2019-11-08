@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import InfiniteScroll from 'react-infinite-scroller';
-// import flickrApi from '../../services/flickrApiService';
+import config from '../../config';
 import './PhotoGrid.css'
 
 const PhotoGrid = (props) => {
-  const pageSize = 10;
   const [pageNum, setPageNum] = useState(1);
   useEffect(props => setPageNum(1), [props.images]);
 
@@ -19,8 +17,8 @@ const PhotoGrid = (props) => {
     <div className="photoGrid">
       <div className="photos">
         {
-          props.images.slice(0, pageNum * pageSize).map(photo => (
-            <img src={photo} />
+          props.images.slice(0, pageNum * config.imagesPerPage).map(photo => (
+            <img key={photo} src={photo} alt=''/>
           ))
         }
       </div>

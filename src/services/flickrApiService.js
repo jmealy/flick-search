@@ -15,7 +15,7 @@ const getImages = (searchTerm) => async dispatch => {
     );
     dispatch(addImages(imageUrls));
   } catch (error) {
-    console.log(`an error occured while fetching images: ${error}`);
+    console.log(`An error occured while fetching images: ${error}`);
 
     dispatch(addImages([]));
   }

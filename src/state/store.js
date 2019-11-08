@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 import imageReducer from './reducers/images';
 import thunk from 'redux-thunk';
 
@@ -8,7 +8,7 @@ export function configureStore(initialState = { images: [] }) {
     initialState,
     compose(
       applyMiddleware(thunk),
-      window.devToolsExtension ? window.devToolsExtension() : f => f
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
     )
   );
   return store;

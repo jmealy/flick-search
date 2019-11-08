@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import addImages from '../../state/actions/addImages';
 import { connect } from 'react-redux';
 import { getImages } from '../../services/flickrApiService';
 import './SearchBar.css';
