@@ -19,3 +19,19 @@
   height: auto !important;
   margin: 1px 2px;
 }
+
+.loadMoreButton {
+  margin: 30px;
+  padding: 8px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  font-size: 14px;
+  color: #4A4F64;
+}
+
+.loadMoreButton:focus {
+  outline: none;
+  box-shadow: 0px 0px 2px #0066ff;
+  border-radius: 4px; 
+}

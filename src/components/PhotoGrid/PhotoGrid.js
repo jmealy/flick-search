@@ -8,7 +8,7 @@ const PhotoGrid = (props) => {
   const pageSize = 10;
   // const pageNum = 0;
   const [pageNum, setPageNum] = useState(1);
-  const [imagesLoaded, setImagesLoaded] = useState();
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
 
   if (!props.images) return null;
@@ -46,7 +46,8 @@ const PhotoGrid = (props) => {
       </div>
       {
         props.images.length > 0 ?
-          <button onClick={loadMore}>Load More</button>
+          <button className="loadMoreButton" onClick={loadMore}>Load More</button>
+          // <input className="loadMoreButton" type="submit" value="Submit" />
           : null
       }
     </div >
