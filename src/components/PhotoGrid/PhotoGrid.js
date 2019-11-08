@@ -6,11 +6,11 @@ import './PhotoGrid.css'
 
 const PhotoGrid = (props) => {
   const pageSize = 10;
-  // const pageNum = 0;
   const [pageNum, setPageNum] = useState(1);
   const [imagesLoaded, setImagesLoaded] = useState(0);
-
-
+  // reset to first page when new search term is entered.
+  useEffect(props => setPageNum(1), [props.images]);
+  
   if (!props.images) return null;
 
   const loadMore = () => {
@@ -31,7 +31,6 @@ const PhotoGrid = (props) => {
     <div className="photoGrid">
       <div className="photos">
         {
-          // imagesLoaded === pageNum * pageSize ? (
           true ? (
             props.images.slice(0, pageNum * pageSize).map(photo => (
               <img onLoad={onImageLoad} src={photo} />
@@ -47,7 +46,6 @@ const PhotoGrid = (props) => {
       {
         props.images.length > 0 ?
           <button className="loadMoreButton" onClick={loadMore}>Load More</button>
-          // <input className="loadMoreButton" type="submit" value="Submit" />
           : null
       }
     </div >
