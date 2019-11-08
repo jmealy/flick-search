@@ -1,21 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import flickrApi from '../../services/flickrApiService';
+import InfiniteScroll from 'react-infinite-scroller';
+// import flickrApi from '../../services/flickrApiService';
 import './PhotoGrid.css'
 
 const PhotoGrid = (props) => {
+  const pageSize = 10;
+  // const pageNum = 0;
+  const [pageNum, setPageNum] = useState(1);
+  const [imagesLoaded, setImagesLoaded] = useState();
+
 
   if (!props.images) return null;
 
+  const loadMore = () => {
+    setPageNum(pageNum + 1);
+  }
+
+  const onImageLoad = () => {
+    // setImagesLoaded(count => count + 1);
+    const newCount = imagesLoaded + 1;
+    setImagesLoaded(newCount);
+
+    if (newCount === pageNum * pageSize) {
+
+    }
+  }
+
   return (
-    <div>
+    <div className="photoGrid">
       <div className="photos">
-        {props.images.map(photo => (
-        <img src={photo} />
-        // <div>{photo}</div>
-        ))}
+        {
+          // imagesLoaded === pageNum * pageSize ? (
+          true ? (
+            props.images.slice(0, pageNum * pageSize).map(photo => (
+              <img onLoad={onImageLoad} src={photo} />
+            ))
+          ) : null
+        }
+        {
+          false ? (
+            <p> Loading...</p>
+          ) : null
+        }
       </div>
-    </div>
+      {
+        props.images.length > 0 ?
+          <button onClick={loadMore}>Load More</button>
+          : null
+      }
+    </div >
   );
 }
 
