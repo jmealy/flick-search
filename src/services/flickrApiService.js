@@ -7,7 +7,7 @@ const getImages = (searchTerm) => async dispatch => {
 
   let responseBody;
   try {
-    const response = await fetch(config.flickrUrl + options);
+    const response = await fetch(config.  flickrUrl + options);
     responseBody = await response.json();
 
     const imageUrls = responseBody.photos.photo.map(image =>
